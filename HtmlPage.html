@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" >
+    <title>Cody Vong Resume</title>
+    <style>
+        #wrapper {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        #top {
+            position:relative;
+            top:-55px;
+        }
+        .scheme {
+            color:white;
+            background-color:blue;
+            padding:50px;
+            font-size:36px;
+            text-align:center;
+        }
+        .text {
+            text-align:center;
+            color:white;
+            position:relative;
+            top:-60px;
+        }
+        .right {
+            text-align:right;
+            font-size:17px;
+        }
+        .image {
+            max-height:250px;
+            max-width:500px;
+            border: 3px solid purple;
+        }
+
+        [data-click] {
+            cursor:pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1 class="scheme">Cody Vong</h1>
+            <p class="text">University Student</p>
+        </header>
+        <div id="top">
+            <main>
+                <header>
+                    <!--<p class="right"><b>Phone Number:</b> 123-456-7890</p> -->
+                    <p class="right"><b>Email:</b> codyrvong@gmail.com</p>
+                </header>
+                <section id="Work-History">
+                    <header>
+                        <h2><u>WORK HISTORY</u></h2>
+                    </header>
+                    <ol>
+                        <li>2020-Present: Walmart - Personal Shopper</li>
+                    </ol>
+                    <ul style="margin-left: 50px;">
+                        <li>
+                            Catered to online customers by picking up the items they purchased in the retail setting
+                        </li>
+                        <li>
+                            Assisted customers with locating items and opening lock-ups for exclusive items
+                        </li>
+                        <li>
+                            Dispensed online orders to customers and delivery drivers picking up at Walmart's curbside
+                        </li>
+                    </ul>
+                </section>
+                <section id="Education-History">
+                    <header>
+                        <h2><u>EDUCATION HISTORY</u></h2>
+                    </header>
+                    <ul>
+                        <li>California State University, Fullerton - Bachelor of Arts in Business Administration, Information Systems</li>
+                        <li>Graduation Date: 2024</li>
+                    </ul>
+                </section>
+                <section id="Skills">
+                    <header>
+                        <h2><u>SKILLS</u></h2>
+                    </header>
+                    <ul>
+                        <li>Adept in Microsoft 365 (Word, Excel, PowerPoint) and Google Suite (Docs, Slides, Sheets)</li>
+                        <li>Limited proficiency in Microsoft Project and Visio</li>
+                        <li>Beginner in C#, SQL, HTML, Javascript, and CSS</li>
+                    </ul>
+                </section>
+                <header>
+                    <h2><u>Let's Keep In Touch!</u></h2>
+                    <img class="image" data-click="imageSwap" data-img2="https://i.imgur.com/XgbZdeA.jpeg" data-img3="https://i.imgur.com/jf1v2jC.jpeg" data-img4="https://i.imgur.com/SSADow0.jpeg" src="https://i.imgur.com/V0yo8xr.jpeg" alt="Dogs" > 
+                </header>
+
+            </main>
+            <footer>
+                <form id="MyForm">
+                    <input type="text" name="FirstName" placeholder="First Name">
+                    <input type="text" name="LastName" placeholder="Last Name">
+                    <input type="text" name="Email" placeholder="Email">
+                    <button id="FormButton" type="button" data-click="talkBack">Tap This Button!</button>
+
+                </form>
+                <!--<p>Fall 2023 ISDS 411-01 21648</p>
+                <p>Date:10/06/2023</p> -->
+                <p class="right">&copy; 2024 Cody Vong</p>
+            </footer>
+        </div>
+        </div>
+    <script>
+
+        const actions = {};
+
+        actions.talkBack = () => {
+            let form = document.querySelector("#MyForm");
+
+            let formData = new FormData(form);
+
+            let formEntries = Object.fromEntries(formData.entries());
+
+            let outputMessage = `Thanks ${formEntries.FirstName} ${formEntries.LastName}!`;
+
+            alert(outputMessage);   
+        };
+
+        actions.imageSwap = (e) => {
+
+            let sourceElement = e.target;
+            let oldUrl = sourceElement.src;
+            let newUrl = sourceElement.dataset.img2;
+            sourceElement.src = newUrl;
+            sourceElement.dataset.img2 = oldUrl;
+
+            let oldUrl2 = sourceElement.src;
+            let newUrl2 = sourceElement.dataset.img3;
+            sourceElement.src = newUrl2;
+            sourceElement.dataset.img3 = oldUrl2;
+
+            let oldUrl3 = sourceElement.src;
+            let newUrl3 = sourceElement.dataset.img4;
+            sourceElement.src = newUrl3;
+            sourceElement.dataset.img4 = oldUrl3;
+        };
+
+        document.addEventListener("click", (e) => {
+            let source = e.target;
+
+            let action = source.dataset.click;
+
+            actions[action]?.(e);
+        });
+
+
+
+
+    </script>
+</body>
+</html>
